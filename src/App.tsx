@@ -22,7 +22,10 @@ function App() {
 
   return (
     <div className="App">
-      <Layout setWishesState={setWishesState} setGamerState={setGamerState} />
+      <Layout
+          setWishesState={ setWishesState }
+          setGamerState={ setGamerState }
+      />
     </div>
   );
 }

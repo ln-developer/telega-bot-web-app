@@ -28,11 +28,11 @@ const CardList = (props: LayoutPropsModel) => {
                     return (
                         <Card
                             isSelected={Boolean(selectedUser)}
-                            user={emploeey}
-                            onSelect={onSelect}
-                            id={idx}
-                            key={idx}
-                            currentSelectedUser={selectedUser}
+                            user={ emploeey }
+                            onSelect={ onSelect }
+                            id={ idx }
+                            key={ idx }
+                            currentSelectedUser={ selectedUser }
                         />)
                 })
             }

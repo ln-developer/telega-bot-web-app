@@ -18,7 +18,10 @@ const Card = (props: UserPropsModel) => {
     const initials = props.user.name.split(' ').map(item => item.substring(0, 1)).join('');
 
     return (
-        <div className={'card_container ' + (props.user.name === props.currentSelectedUser ? 'active' : '')} onClick={ onSelectHandler }>
+        <div
+            className={ 'card_container ' + (props.user.name === props.currentSelectedUser ? 'active' : '') }
+            onClick={ onSelectHandler }
+        >
             {
                 props.user.src ?
                     <img className="card_img" src={ props.user.src } alt={ props.user.name }/> :

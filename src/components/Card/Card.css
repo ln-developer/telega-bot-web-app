@@ -4,9 +4,10 @@
     align-items: center;
     margin: 12px;
     padding: 12px;
-    border: 2px solid black;
+    border: 2px solid #b5b5c3;
     border-radius: 5px;
     width: calc(100% / 2 - 24px);
+    background-color: var(--tg-theme-secondary-bg-color);
 }
 
 .card_container.active {
@@ -16,7 +17,7 @@
 .card_img {
     height: 60px;
     width: 60px;
-    border: 1px solid black;
+    border: 1px solid #b5b5c3;
     border-radius: 50%;
 }
 
