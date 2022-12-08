@@ -15,7 +15,7 @@ const CardList = (props: LayoutPropsModel) => {
     useEffect(() => {
         props.onActive(Boolean(selectedUser));
         props.setGamerState(selectedUser ?? '');
-    }, [selectedUser])
+    }, [selectedUser, props])
 
     const onSelect = (name: string) => {
         setSelectedUser(name);

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import Layout from "./components/Layout/Layout";
 
@@ -6,18 +6,18 @@ import Layout from "./components/Layout/Layout";
 const tg = window.Telegram.WebApp;
 
 function App() {
-  const [wishes, setWishes] = useState<string>('');
-  const [gamer, setGamer] = useState<string>('');
+  // const [wishes, setWishes] = useState<string>('');
+  // const [gamer, setGamer] = useState<string>('');
   useEffect(() => {
     tg.ready();
   }, [])
 
   const setWishesState = (wishes: string) => {
-    setWishes(wishes);
+    // setWishes(wishes);
   }
 
   const setGamerState = (name: string) => {
-    setGamer(name);
+    // setGamer(name);
   }
 
   return (
