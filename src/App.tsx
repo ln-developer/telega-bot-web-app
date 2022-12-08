@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import Layout from "./components/Layout/Layout";
+
+// @ts-ignore
+const tg = window.Telegram.WebApp;
 
 function App() {
+  const [wishes, setWishes] = useState<string>('');
+  const [gamer, setGamer] = useState<string>('');
+  useEffect(() => {
+    tg.ready();
+  }, [])
+
+  const setWishesState = (wishes: string) => {
+    setWishes(wishes);
+  }
+
+  const setGamerState = (name: string) => {
+    setGamer(name);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Layout setWishesState={setWishesState} setGamerState={setGamerState} />
     </div>
   );
 }

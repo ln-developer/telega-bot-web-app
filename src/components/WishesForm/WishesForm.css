@@ -1,0 +1,21 @@
+.wishes-form_container {
+    height: calc(100% - 24px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 12px;
+}
+
+.wishes-form_header {
+    margin-bottom: 12px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.wishes-form_control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b5b5c3;
+    border-radius: 5px;
+}
