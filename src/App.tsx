@@ -1,31 +1,18 @@
 import React, {useEffect} from 'react';
 import './App.css';
 import Layout from "./components/Layout/Layout";
-
-// @ts-ignore
-const tg = window.Telegram.WebApp;
+import {useTelegram} from "./shared/hooks/useTelegram";
 
 function App() {
-  // const [wishes, setWishes] = useState<string>('');
-  // const [gamer, setGamer] = useState<string>('');
+  const { tg } = useTelegram();
+
   useEffect(() => {
     tg.ready();
   }, [])
 
-  const setWishesState = (wishes: string) => {
-    // setWishes(wishes);
-  }
-
-  const setGamerState = (name: string) => {
-    // setGamer(name);
-  }
-
   return (
     <div className="App">
-      <Layout
-          setWishesState={ setWishesState }
-          setGamerState={ setGamerState }
-      />
+      <Layout/>
     </div>
   );
 }

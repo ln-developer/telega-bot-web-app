@@ -1,19 +1,17 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import './Layout.css';
 import CardList from "../CardList/CardList";
 import WishesForm from "../WishesForm/WishesForm";
+import {useTelegram} from "../../shared/hooks/useTelegram";
 
-interface MainStateModel {
-    setWishesState: (wishes: string) => void;
-    setGamerState: (name: string) => void;
-}
+const Layout = () => {
+    const { onClose, queryId } = useTelegram();
 
-// @ts-ignore
-const tg = window.Telegram.WebApp;
-
-const Layout = (props: MainStateModel) => {
     const [isActiveBtn, setIsActiveBtn] = useState<boolean>(false);
     const [currentStep, setCurrentStep] = useState<number>(1);
+
+    const [gamer, setGamer] = useState<string | null>(null);
+    const [wishes, setWishes] = useState<string>('');
 
     const onActive = (isActive: boolean) => {
         setIsActiveBtn(isActive);
@@ -27,9 +25,35 @@ const Layout = (props: MainStateModel) => {
         setCurrentStep(currentStep - 1);
     }
 
-    const onClose = () => {
-        tg.close();
+    const setGamerState = (name: string) => {
+        setGamer(name);
     }
+
+    const setWishesState = (wishes: string) => {
+        setWishes(wishes);
+    }
+
+    const onSendData = useCallback(() => {
+        const data = {
+            gamer,
+            wishes,
+            queryId
+        }
+
+        fetch('http://localhost:8000/web-data', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        }).then(() => {
+            console.log('CLOSE APP');
+            onClose();
+        })
+
+    }, [gamer, wishes, onClose, queryId]);
+
+
 
     return (
         <div className="layout_container">
@@ -42,8 +66,8 @@ const Layout = (props: MainStateModel) => {
             <div className="layout_content">
                 {
                      currentStep === 1 ?
-                        <CardList setGamerState={ props.setGamerState } onActive={ onActive } /> :
-                        <WishesForm setWishes={ props.setWishesState }/>
+                        <CardList setGamerState={ setGamerState } onActive={ onActive } /> :
+                        <WishesForm setWishes={ setWishesState }/>
                 }
             </div>
             <div className="actions_container">
@@ -57,7 +81,7 @@ const Layout = (props: MainStateModel) => {
                     )
                 }
                 <button
-                    onClick={ currentStep === 1 ? nextStep : onClose }
+                    onClick={ currentStep === 1 ? nextStep : onSendData }
                     disabled={ !isActiveBtn }
                     className={ 'layout_actions next ' + (isActiveBtn ? 'active' : 'disable') }>
                     { currentStep === 1 ? 'Выбрать' : 'Завершить' }
