@@ -5,7 +5,7 @@ import WishesForm from "../WishesForm/WishesForm";
 import {useTelegram} from "../../shared/hooks/useTelegram";
 
 const Layout = () => {
-    const { onClose, queryId } = useTelegram();
+    const { queryId } = useTelegram();
 
     const [isActiveBtn, setIsActiveBtn] = useState<boolean>(false);
     const [currentStep, setCurrentStep] = useState<number>(1);
