@@ -48,7 +48,7 @@ const Layout = () => {
             body: JSON.stringify(data)
         }).then(() => {
             console.log('CLOSE APP');
-            onClose();
+            // onClose();
         })
 
     }, [gamer, wishes, onClose, queryId]);
