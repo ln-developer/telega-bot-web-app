@@ -51,7 +51,7 @@ const Layout = () => {
             // onClose();
         })
 
-    }, [gamer, wishes, onClose, queryId]);
+    }, [gamer, wishes, queryId]);
 
 
 
