@@ -5,7 +5,7 @@ import WishesForm from "../WishesForm/WishesForm";
 import {useTelegram} from "../../shared/hooks/useTelegram";
 
 const Layout = () => {
-    const { queryId } = useTelegram();
+    const { onClose, queryId } = useTelegram();
 
     const [isActiveBtn, setIsActiveBtn] = useState<boolean>(false);
     const [currentStep, setCurrentStep] = useState<number>(1);
@@ -48,10 +48,10 @@ const Layout = () => {
             body: JSON.stringify(data)
         }).then(() => {
             console.log('CLOSE APP');
-            // onClose();
+            onClose();
         })
 
-    }, [gamer, wishes, queryId]);
+    }, [gamer, wishes, onClose, queryId]);
 
 
 
