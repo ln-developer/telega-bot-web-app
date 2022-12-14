@@ -45,7 +45,6 @@ const Layout = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            referrerPolicy: 'unsafe-url',
             body: JSON.stringify(data)
         }).then(() => {
             console.log('CLOSE APP');
